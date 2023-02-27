@@ -161,12 +161,16 @@ public class QuanLyThueXe implements IQuanLyThueXe{
     public void removeNguoi(Nguoi ng){
         for (int i = 0; i < DsNv.size(); i++){
             if (ng instanceof NhanVien && DsNv.get(i) instanceof NhanVien){
-                if (((NhanVien)DsNv.get(i)).getMaNv().equals(((NhanVien)ng).getMaNv()))
+                if (((NhanVien)DsNv.get(i)).getMaNv().equals(((NhanVien)ng).getMaNv())){
                     DsNv.remove(i);
+                    i--;
+                }
             }
             else if (ng instanceof KhachHang && DsNv.get(i) instanceof KhachHang){
-                if (((KhachHang)DsNv.get(i)).getMaKh().equals(((KhachHang)ng).getMaKh()))
+                if (((KhachHang)DsNv.get(i)).getMaKh().equals(((KhachHang)ng).getMaKh())){
                     DsNv.remove(i);
+                    i--;
+                }
             }
         }
         WriteFile();
@@ -194,12 +198,16 @@ public class QuanLyThueXe implements IQuanLyThueXe{
     public void removeXe(Xe xe){
         for (int i = 0; i < DsXe.size(); i++){
             if (xe instanceof XeChoHang && DsXe.get(i) instanceof XeChoHang){
-                if (DsXe.get(i).getBienSo().equals(((XeChoHang)xe).getBienSo()))
+                if (DsXe.get(i).getBienSo().equals(((XeChoHang)xe).getBienSo())){
                     DsXe.remove(i);
+                    i--;
+                }
             }
             else if (xe instanceof XeDuLich && DsXe.get(i) instanceof XeDuLich){
-                if (DsXe.get(i).getBienSo().equals(((XeDuLich)xe).getBienSo()))
+                if (DsXe.get(i).getBienSo().equals(((XeDuLich)xe).getBienSo())){
                     DsXe.remove(i);
+                    i--;
+                }
             }
         }
         WriteFile();
@@ -234,8 +242,10 @@ public class QuanLyThueXe implements IQuanLyThueXe{
     
     public void removeHopDong(HopDongChoThue hd){
         for (int i = 0; i < DsHd.size(); i++){
-            if (DsHd.get(i).getXe().getBienSo().equals(hd.getXe().getBienSo()))
+            if (DsHd.get(i).getXe().getBienSo().equals(hd.getXe().getBienSo())){
                 DsHd.remove(i);
+                i--;
+            }
         }
         WriteFile();
     }
